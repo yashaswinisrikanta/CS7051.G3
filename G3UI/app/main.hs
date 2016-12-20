@@ -77,12 +77,13 @@ instance RenderMessage App FormMessage where
 getRootR :: Handler Html
 getRootR = do
     sess <- getSession
+    
+    -- defaultLayout [whamlet|
+    --     <h2>
+    --         <a href=@{AuthR LoginR}>Log in
+    --         #{show sess}
+    -- |]
 
-    defaultLayout [whamlet|
-        <h2>
-            <a href=@{AuthR LoginR}>Log in
-            #{show sess}
-    |]
 
 
 mkFoundation :: IO App
