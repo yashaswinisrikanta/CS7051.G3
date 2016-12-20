@@ -1,18 +1,4 @@
--- import Prelude     (IO)
--- import Application (appMain)
---
--- main :: IO ()
--- main = appMain
-
-{-# LANGUAGE MultiParamTypeClasses #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE QuasiQuotes #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TemplateHaskell #-}
-{-# LANGUAGE TypeFamilies #-}
-{-# LANGUAGE ViewPatterns #-}
-
-module Main where
+module Handler.Login where
 
 import Data.Monoid ((<>))
 import Data.Text (Text)
@@ -83,7 +69,6 @@ instance RenderMessage App FormMessage where
 getRootR :: Handler Html
 getRootR = do
     sess <- getSession
-
     defaultLayout [whamlet|
         <h2>
             <a href=@{AuthR LoginR}>Log in
@@ -99,6 +84,5 @@ mkFoundation = do
     appGithubKeys <- loadOAuthKeysEnv "GITHUB"
 
     return App{..}
-
-main :: IO ()
-main = runEnv 3000 =<< toWaiApp =<< mkFoundation
+Login :: IO ()
+Login = runEnv 3000 =<< toWaiApp =<< mkFoundation
