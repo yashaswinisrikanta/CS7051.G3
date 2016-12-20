@@ -85,7 +85,6 @@ library
                  , time
                  , case-insensitive
                  , wai
-                 , yesod-auth
 
 executable         G3UI
     if flag(library-only)
