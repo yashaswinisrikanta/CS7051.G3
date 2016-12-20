@@ -5,7 +5,7 @@
     SEARCH
   <button .btn.btn-primary type="login">
     LoginWithGithub
-  <a href=@{AuthR LoginR}>log in
+  <a href="http://localhost:3000/auto/login">log in
   <div .row>
     <div well>
         <div .col-lg-6>
