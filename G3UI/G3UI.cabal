@@ -22,6 +22,7 @@ library
                      Handler.Common
                      Handler.Home
                      Handler.Comment
+                     Handler.Submit
 
 
     if flag(dev) || flag(library-only)
@@ -86,6 +87,11 @@ library
                  , time
                  , case-insensitive
                  , wai
+                 , bson
+                 , bson-generic
+                 , servant
+                 , servant-client
+                 , servant-server
                  , yesod-auth
                  , yesod-auth-oauth2
 

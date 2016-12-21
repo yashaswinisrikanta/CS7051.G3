@@ -33,6 +33,7 @@ import System.Log.FastLogger                (defaultBufSize, newStdoutLoggerSet,
 import Handler.Common
 import Handler.Home
 import Handler.Comment
+import Handler.Submit
 
 import System.Environment (getEnv)
 import qualified Data.Text as T

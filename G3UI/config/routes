@@ -8,3 +8,5 @@
 /auth AuthR Auth getAuth
 
 /comments CommentR POST
+
+/submit submitR POST 

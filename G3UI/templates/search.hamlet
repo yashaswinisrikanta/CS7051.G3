@@ -12,26 +12,26 @@
                  <div .form-group>
                  <table>
                     <tr>
-                        <td #username>
+                        <td>
                          User Name:
                      <td>
-                        <input type=Text ##username> <br>
+                        <input type=Text ##{username}> <br>
 
-           <form .form-horizontal  method=post>
+           <form .form-horizontal  method=post >
                  <div .form-group>
                  <table>
                     <tr>
                         <td>
                          User Name:
                      <td>
-                        <input type=Text> <br>
+                        <input type=Text ##{username}> <br>
 
                     <tr>
                       <td>
                         Repository Name:
                       <td>
 
-                        <input type=Text ##reponame>
+                        <input type=Text ##{reponame}>
 
                         <input type=Text>
 
@@ -42,9 +42,9 @@
                         URL:
                       <td>
 
-                        <input type=Text ##urlname><br>
+                        <input type=Text ##{urlname}}><br>
 
-                        <input type=Text><br>
+                      //   <input type=Text><br>
 
                     <tr>
                        <td>
@@ -57,7 +57,7 @@
                        (if private):
                     <td>
 
-                       <input type=Text #tokenname>
+                       <input type=Text #{tokenname}}>
 
                        <input type=Text>
 
