@@ -12,7 +12,7 @@ Flag library-only
     Default:       False
 
 library
-    hs-source-dirs: ., app
+    hs-source-dirs: ., app, Handler
     exposed-modules: Application
                      Foundation
                      Import
@@ -23,6 +23,7 @@ library
                      Handler.Home
                      Handler.Comment
                      Handler.Submit
+
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT
@@ -91,6 +92,8 @@ library
                  , servant
                  , servant-client
                  , servant-server
+                 , yesod-auth
+                 , yesod-auth-oauth2
 
 executable         G3UI
     if flag(library-only)
