@@ -8,6 +8,9 @@ import Yesod.Default.Util          (addStaticContentExternal)
 import qualified Yesod.Core.Unsafe as Unsafe
 import qualified Data.CaseInsensitive as CI
 import qualified Data.Text.Encoding as TE
+import Yesod.Auth
+import Yesod.Auth.OAuth2.Github
+
 
 -- | The foundation datatype for your application. This can be a good place to
 -- keep settings and values requiring initialization before your application
@@ -17,9 +20,13 @@ data App = App
     { appSettings    :: AppSettings
     , appStatic      :: Static -- ^ Settings for static file serving.
     , appHttpManager :: Manager
+    , appGithubKeys :: OAuthKeys
     , appLogger      :: Logger
     }
-
+data OAuthKeys = OAuthKeys
+    { oauthKeysClientId :: Text
+    , oauthKeysClientSecret :: Text
+    }
 data MenuItem = MenuItem
     { menuItemLabel :: Text
     , menuItemRoute :: Route App
@@ -141,10 +148,37 @@ instance Yesod App where
 
     makeLogger = return . appLogger
 
+
 -- Define breadcrumbs.
 instance YesodBreadcrumbs App where
   breadcrumb HomeR = return ("Home", Nothing)
   breadcrumb  _ = return ("home", Nothing)
+
+instance YesodAuth App where
+  type AuthId App = Text
+  loginDest _ = HomeR
+  logoutDest _ = HomeR
+
+
+    -- Disable any attempt to read persisted authenticated state
+  maybeAuthId = return Nothing
+
+    -- Copy the Creds response into the session for viewing after
+  authenticate c = do
+      mapM_ (uncurry setSession) $
+          [ ("credsIdent", credsIdent c)
+          , ("credsPlugin", credsPlugin c)
+          ] ++ credsExtra c
+
+      return $ Authenticated "1"
+
+  authHttpManager = appHttpManager
+
+  authPlugins m =
+      [ oauth2Github
+          (oauthKeysClientId $ appGithubKeys m)
+          (oauthKeysClientSecret $ appGithubKeys m)
+      ]
 
 -- This instance is required to use forms. You can modify renderMessage to
 -- achieve customized and internationalized form validation messages.
@@ -159,6 +193,13 @@ instance HasHttpManager App where
 
 unsafeHandler :: App -> Handler a -> IO a
 unsafeHandler = Unsafe.fakeHandlerGetLogger appLogger
+
+oauthUrl :: Text -> AuthRoute
+oauthUrl name = PluginR name ["forward"]
+
+githubUrl :: AuthRoute
+githubUrl = oauthUrl "github"
+
 
 -- Note: Some functionality previously present in the scaffolding has been
 -- moved to documentation in the Wiki. Following are some hopefully helpful
