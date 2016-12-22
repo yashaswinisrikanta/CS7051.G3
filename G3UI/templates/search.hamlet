@@ -10,10 +10,12 @@
         <span .icon-bar>
       <a .navbar-brand href="#">Brand
 
+
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div .collapse .navbar-collapse #bs-example-navbar-collapse-1>
       <ul .nav .navbar-nav>
         <li><a href="#">Link</a>
+        <li><a href="/auth/page/github/forward">Log in</a>
 
       <form .navbar-form .navbar-right role="search">
         <div .form-group>
