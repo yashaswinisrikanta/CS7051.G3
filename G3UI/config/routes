@@ -5,6 +5,8 @@
 
 / HomeR GET POST
 
+/auth AuthR Auth getAuth
+
 /comment CommentR POST
 
 /submit SubmitR POST

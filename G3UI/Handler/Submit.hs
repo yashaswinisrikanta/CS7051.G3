@@ -27,7 +27,8 @@ import Data.FileEmbed (embedFile)
 postSubmitR :: Handler Value
 postSubmitR =
     error "The simple scaffolding does not support authentication or a database for storing comments"
-
+    $(widgetFile "result")
+    
 searchIds :: (Text, Text, Text, Text, Text, Text, Text, Text)
 searchIds = ("js-session", "js-username", "js-reponame", "js-urlname","js-tokenname", "js-repoType", "js-queryType", "js-selectname")
 
