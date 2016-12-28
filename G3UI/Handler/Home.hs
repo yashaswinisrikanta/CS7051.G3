@@ -13,7 +13,8 @@ data FileForm = FileForm
     }
 data JsonForm = JsonForm
     {
-      username :: Text
+      sessValue :: Text
+    , username :: Text
     , reponame :: Text
     , urlname :: Text
     , tokenname :: Maybe Text
@@ -36,7 +37,9 @@ getHomeR = do
         handlerName = "getHomeR" :: Text
     defaultLayout $ do
         sess <- getSession
-        let (session, username, reponame, urlname, tokenname, repoType, queryType, selectname) = searchIds
+        msessValue <- lookupSession "access_token"
+        let sessValue = show msessValue
+        let (sessValue, username, reponame, urlname, tokenname, repoType, queryType, selectname) = searchIds
         aDomId <- newIdent
         setTitle "Welcome To Yesod!"
         $(widgetFile "search")
@@ -50,7 +53,7 @@ postHomeR = do
             _ -> Nothing
 
     defaultLayout $ do
-        let (_, username, reponame, urlname, tokenname, repoType, queryType, selectname) = searchIds
+        let (sessValue, username, reponame, urlname, tokenname, repoType, queryType, selectname) = searchIds
         aDomId <- newIdent
         setTitle "Welcome To Yesod!"
         $(widgetFile "search")
@@ -72,7 +75,7 @@ sampleForm = renderBootstrap3 BootstrapBasicForm $ FileForm
             }
 
 searchIds :: (Text, Text, Text, Text, Text, Text, Text, Text)
-searchIds = ("js-session", "js-username", "js-reponame", "js-urlname","js-tokenname", "js-repoType", "js-queryType", "js-selectname")
+searchIds = ("js-sessValue", "js-username", "js-reponame", "js-urlname","js-tokenname", "js-repoType", "js-queryType", "js-selectname")
 
 commentIds :: (Text, Text, Text)
 commentIds = ("js-commentForm", "js-createCommentTextarea", "js-commentList")
