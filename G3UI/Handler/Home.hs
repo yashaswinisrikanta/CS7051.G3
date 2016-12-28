@@ -13,7 +13,7 @@ data FileForm = FileForm
     }
 data JsonForm = JsonForm
     {
-      sessValue :: Text
+      sessValue ::Maybe Text
     , username :: Text
     , reponame :: Text
     , urlname :: Text
