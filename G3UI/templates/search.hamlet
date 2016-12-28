@@ -70,7 +70,7 @@
                         <label>Token(if private):
                       <div .col-sm-5 >
                         <div >
-                          <input .form-control type=Text ##{tokenname}>
+                          <input .form-control type=Text ##{sessValue}>
                       <div .col-sm-3 >
 
 <form method=post .text-center >
