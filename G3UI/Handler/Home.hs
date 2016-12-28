@@ -4,7 +4,7 @@ import Import
 import Yesod.Form.Bootstrap3 (BootstrapFormLayout (..), renderBootstrap3)
 import Text.Julius (RawJS (..))
 import Yesod.Auth
-
+import Yesod.Auth.OAuth2.Github
 
 -- Define our data that will be used for creating the form.
 data FileForm = FileForm
