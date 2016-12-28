@@ -53,6 +53,9 @@ postHomeR = do
             _ -> Nothing
 
     defaultLayout $ do
+        sess <- getSession
+        msessValue <- lookupSession "access_token"
+        let sessValue = show msessValue
         let (sessValue, username, reponame, urlname, tokenname, repoType, queryType, selectname) = searchIds
         aDomId <- newIdent
         setTitle "Welcome To Yesod!"
