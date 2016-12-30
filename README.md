@@ -9,10 +9,10 @@ We design a website to support search over Github repositories where you can cho
 
 ###2. How to run?
 (1)Download to your localhost first, and input the following in your command line </br>
-    `cd ./CS7051.G3/G3UI` </br>
-    `stack build` </br>
+    cd ./CS7051.G3/G3UI </br>
+    `stack build` </br></br>
 (2)Construct the running environment </br>
-    `export the content from run.sh`
+    `export the content from run.sh` </br></br>
 (3)Run the project </br>
     `stack exec G3UI`
 
