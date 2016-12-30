@@ -9,7 +9,7 @@ We design a website to support search over Github repositories where you can cho
 
 ###2. How to run?
 (1)Download to your localhost first, and input the following in your command line </br>
-    cd ./CS7051.G3/G3UI </br>
+    `cd ./CS7051.G3/G3UI` </br>
     `stack build` </br></br>
 (2)Construct the running environment </br>
     `export the content from run.sh` </br></br>
