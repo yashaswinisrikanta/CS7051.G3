@@ -20,8 +20,5 @@ $function errorFunction(data)()
 
 $function successFunction(data)()
 {
-
-
-
-
+  console.log("success!");
 });
