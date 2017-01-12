@@ -17,10 +17,7 @@
         <li><a href="#">Link</a>
         <li><a href="/auth/page/github/forward">Log in</a>
 
-      <form .navbar-form .navbar-right role="search">
-        <div .form-group>
-          <input type="text" .form-control placeholder="Search">
-        <button type="submit" .btn .btn-default>Submit
+      
       <ul .nav .navbar-nav .navbar-right>
 
 
